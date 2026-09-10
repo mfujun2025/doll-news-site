@@ -21,7 +21,7 @@
 
 ## 联系我们
 
-- 商务合作：**contact@chongqiwawa.cn**
+- 商务合作：**548827878@qq.com**
 - 广告服务：[点击访问](https://172.lot-ml.com/ProductEn/Index/04a04744e3c8d9a6)
 
 ## 技术栈
