@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网站地图 — 充气娃娃.cn</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --bg:#fdf5f5;--bg2:#f7eaea;--card:#ffffff;--card2:#fdf0f0;
+  --text:#3a2a2a;--text2:#7a6a6a;--text3:#a89898;
+  --accent:#c0392b;--accent2:#a93226;--accent-soft:rgba(192,57,43,.08);
+  --border:rgba(0,0,0,.08);--radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Noto Serif SC',serif;font-weight:700;line-height:1.35}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* 导航 */
+header{position:sticky;top:0;z-index:100;background:rgba(253,245,245,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700}
+.logo-mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text2);font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.age-badge{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--accent);color:var(--accent);font-weight:500}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+
+/* 页面头部 */
+.page-hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.page-hero h1{font-size:32px;margin-bottom:10px}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero p{color:var(--text2);font-size:15px;max-width:640px}
+.breadcrumb{font-size:13px;color:var(--text3);margin-bottom:16px}
+.breadcrumb a{color:var(--text2)}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{margin:0 8px}
+
+/* 网站地图主体 */
+.sitemap-section{padding:48px 0 64px}
+.sitemap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.sitemap-col{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.sitemap-col h2{font-size:18px;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--accent-soft);display:flex;align-items:center;gap:10px}
+.sitemap-col h2 .icon{width:32px;height:32px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sitemap-col h2 .icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2}
+.sitemap-col ul{list-style:none}
+.sitemap-col li{margin-bottom:10px}
+.sitemap-col li a{font-size:14px;color:var(--text2);display:flex;align-items:center;gap:8px;transition:color .2s;padding:4px 0}
+.sitemap-col li a:hover{color:var(--accent)}
+.sitemap-col li a::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--text3);flex-shrink:0;transition:background .2s}
+.sitemap-col li a:hover::before{background:var(--accent)}
+.sitemap-col .sub-list{margin-left:16px;margin-top:6px;padding-left:12px;border-left:1px solid var(--border)}
+.sitemap-col .sub-list li{margin-bottom:6px}
+.sitemap-col .sub-list li a{font-size:13px;color:var(--text3)}
+
+/* 统计卡片 */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:40px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.stat-card .num{font-family:'Noto Serif SC',serif;font-size:32px;font-weight:700;color:var(--accent)}
+.stat-card .label{font-size:13px;color:var(--text3);margin-top:6px}
+
+/* 快速链接 */
+.quick-links{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-top:32px}
+.quick-links h2{font-size:18px;margin-bottom:20px}
+.quick-tags{display:flex;flex-wrap:wrap;gap:10px}
+.quick-tag{font-size:13px;padding:8px 16px;border-radius:20px;background:var(--accent-soft);color:var(--accent);transition:all .2s}
+.quick-tag:hover{background:var(--accent);color:#fff}
+
+/* 页脚 */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 24px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer-brand p{font-size:13px;color:var(--text2);margin-top:14px;line-height:1.7}
+.footer-col h4{font-size:14px;margin-bottom:16px;color:var(--text)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:13px;color:var(--text3);transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:var(--text3)}
+.compliance{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.15);border-radius:8px;padding:14px 20px;margin-bottom:28px;font-size:12px;color:var(--text2);line-height:1.8}
+.compliance strong{color:var(--accent)}
+
+/* Toast */
+#toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--accent);color:var(--text);padding:12px 24px;border-radius:8px;font-size:14px;z-index:9998;transition:all .3s;opacity:0;pointer-events:none}
+
+/* 响应式 */
+@media(max-width:968px){
+  .sitemap-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .page-hero h1{font-size:26px}
+}
+@media(max-width:560px){
+  .sitemap-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">充</div>
+      <div>充气娃娃<span>.cn</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#news">行业资讯</a></li>
+      <li><a href="index.html#edu">产品科普</a></li>
+      <li><a href="index.html#guide">选购指南</a></li>
+      <li><a href="index.html#health">两性健康</a></li>
+      <li><a href="manufacturers.html">生产厂家</a></li>
+      <li><a href="index.html#law">法律法规</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="age-badge">18+</span>
+    </div>
+    <button class="menu-toggle" onclick="showToast('移动端菜单演示中')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</header>
+
+<!-- 页面头部 -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">首页</a><span>/</span>网站地图
+    </div>
+    <h1>网站<em>地图</em></h1>
+    <p>全站栏目与页面结构总览，快速导航到你需要的内容。</p>
+  </div>
+</section>
+
+<!-- 网站地图主体 -->
+<section class="sitemap-section">
+  <div class="container">
+    <!-- 统计 -->
+    <div class="stats-row">
+      <div class="stat-card"><div class="num">6</div><div class="label">主要频道</div></div>
+      <div class="stat-card"><div class="num">12</div><div class="label">收录厂家</div></div>
+      <div class="stat-card"><div class="num">20+</div><div class="label">内容分类</div></div>
+      <div class="stat-card"><div class="num">3</div><div class="label">独立页面</div></div>
+    </div>
+
+    <div class="sitemap-grid">
+      <!-- 行业资讯 -->
+      <div class="sitemap-col">
+        <h2><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9h4"/><line x1="18" y1="6" x2="10" y2="6"/><line x1="18" y1="10" x2="10" y2="10"/><line x1="18" y1="14" x2="10" y2="14"/></svg></span>行业资讯</h2>
+        <ul>
+          <li><a href="index.html#news">最新资讯</a></li>
+          <li><a href="index.html#news">市场动态</a></li>
+          <li><a href="index.html#news">品牌动态</a></li>
+          <li><a href="index.html#news">政策法规</a></li>
+          <li><a href="index.html#news">技术前沿</a></li>
+          <li><a href="index.html#news">展会信息</a></li>
+          <li><a href="index.html#news">投融资动态</a></li>
+          <li><a href="index.html#news">行业报告</a></li>
+        </ul>
+      </div>
+
+      <!-- 产品科普 -->
+      <div class="sitemap-col">
+        <h2><span class="icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>产品科普</h2>
+        <ul>
+          <li><a href="index.html#edu">材质对比（TPE vs 硅胶）</a></li>
+          <li><a href="index.html#edu">正确清洁方式</a></li>
+          <li><a href="index.html#edu">安全使用须知</a></li>
+          <li><a href="index.html#edu">正品鉴别方法</a></li>
+          <li><a href="index.html#edu">润滑剂选择指南</a></li>
+          <li><a href="index.html#edu">存储与保养</a></li>
+          <li><a href="index.html#edu">常见问题解答</a></li>
+        </ul>
+      </div>
+
+      <!-- 选购指南 -->
+      <div class="sitemap-col">
+        <h2><span class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>选购指南</h2>
+        <ul>
+          <li><a href="index.html#guide">新手入门（500元内）</a></li>
+          <li><a href="index.html#guide">中端进阶（1000-3000元）</a></li>
+          <li><a href="index.html#guide">高端定制（5000元以上）</a></li>
+          <li><a href="index.html#guide">避坑指南</a></li>
+          <li><a href="index.html#guide">品牌横评</a></li>
+          <li><a href="index.html#guide">参数解读</a></li>
+          <li><a href="index.html#guide">市场规模趋势</a></li>
+        </ul>
+      </div>
+
+      <!-- 两性健康 -->
+      <div class="sitemap-col">
+        <h2><span class="icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>两性健康</h2>
+        <ul>
+          <li><a href="index.html#health">身体健康问答</a></li>
+          <li><a href="index.html#health">伴侣沟通技巧</a></li>
+          <li><a href="index.html#health">心理健康边界</a></li>
+          <li><a href="index.html#health">性健康常识</a></li>
+          <li><a href="index.html#health">亲密关系指南</a></li>
+          <li><a href="index.html#health">医学参考来源</a></li>
+        </ul>
+      </div>
+
+      <!-- 生产厂家 -->
+      <div class="sitemap-col">
+        <h2><span class="icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg></span>生产厂家</h2>
+        <ul>
+          <li><a href="manufacturers.html">全部厂家</a></li>
+          <li><a href="manufacturers.html">广东地区厂家</a></li>
+          <li><a href="manufacturers.html">浙江地区厂家</a></li>
+          <li><a href="manufacturers.html">硅胶制品厂家</a></li>
+          <li><a href="manufacturers.html">智能硬件厂家</a></li>
+          <li><a href="manufacturers.html">安全套厂家</a></li>
+          <li><a href="manufacturers.html">护理用品厂家</a></li>
+          <li><a href="manufacturers.html">已核验企业</a></li>
+        </ul>
+      </div>
+
+      <!-- 法律法规 & 关于 -->
+      <div class="sitemap-col">
+        <h2><span class="icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>法律法规 & 关于</h2>
+        <ul>
+          <li><a href="index.html#law">广告法合规</a></li>
+          <li><a href="index.html#law">产品质量标准</a></li>
+          <li><a href="index.html#law">电商平台规则</a></li>
+          <li><a href="index.html#law">进出口监管</a></li>
+          <li><a href="index.html#law">未成年人保护</a></li>
+          <li><a href="sitemap.html">网站地图</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">关于我们</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 快速链接 -->
+    <div class="quick-links">
+      <h2>热门快速链接</h2>
+      <div class="quick-tags">
+        <a href="index.html" class="quick-tag">首页</a>
+        <a href="index.html#news" class="quick-tag">最新资讯</a>
+        <a href="manufacturers.html" class="quick-tag">厂家导航</a>
+        <a href="index.html#guide" class="quick-tag">选购指南</a>
+        <a href="index.html#edu" class="quick-tag">产品科普</a>
+        <a href="index.html#health" class="quick-tag">两性健康</a>
+        <a href="index.html#law" class="quick-tag">法律法规</a>
+        <a href="sitemap.html" class="quick-tag">网站地图</a>
+        <a href="https://172.lot-ml.com/ProductEn/Index/04a04744e3c8d9a6" target="_blank" rel="noopener" class="quick-tag">广告服务</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="container">
+    <div class="compliance">
+      <strong>合规声明：</strong>本站为成人用品行业资讯与两性健康科普网站，所有内容仅限年满 18 周岁的成年人访问。本站不发布、不传播任何淫秽色情内容。厂家信息仅供行业参考，不构成采购推荐。
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-mark">充</div>
+          <div>充气娃娃<span>.cn</span></div>
+        </a>
+        <p>专注成人用品行业资讯与两性健康科普的垂直门户，以科学、理性、合规的视角服务成年用户。</p>
+        <p style="margin-top:16px;font-size:13px;color:var(--text2)">
+          <svg style="width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;vertical-align:middle;margin-right:6px" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          商务合作：548827878@qq.com
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>内容频道</h4>
+        <ul>
+          <li><a href="index.html#news">行业资讯</a></li>
+          <li><a href="index.html#edu">产品科普</a></li>
+          <li><a href="index.html#guide">选购指南</a></li>
+          <li><a href="index.html#health">两性健康</a></li>
+          <li><a href="manufacturers.html">生产厂家</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>关于我们</h4>
+        <ul>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">站点介绍</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">编辑团队</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">投稿合作</a></li>
+          <li><a href="https://172.lot-ml.com/ProductEn/Index/04a04744e3c8d9a6" target="_blank" rel="noopener">广告服务</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">联系我们</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法律条款</h4>
+        <ul>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">用户协议</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">隐私政策</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">未成年人保护</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">内容免责声明</a></li>
+          <li><a href="sitemap.html">网站地图</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 充气娃娃.cn 版权所有 · 本站内容仅供成年人参考</p>
+      <p>ICP 备案号：待接入 · 经营许可证：待接入</p>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.opacity='1';
+  t.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(function(){t.style.opacity='0';t.style.transform='translateX(-50%) translateY(80px)'},2200);
+}
+</script>
+</body>
+</html>
