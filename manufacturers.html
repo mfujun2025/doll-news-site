@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生产厂家导航 — 充气娃娃.cn</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --bg:#fdf5f5;--bg2:#f7eaea;--card:#ffffff;--card2:#fdf0f0;
+  --text:#3a2a2a;--text2:#7a6a6a;--text3:#a89898;
+  --accent:#c0392b;--accent2:#a93226;--accent-soft:rgba(192,57,43,.08);
+  --border:rgba(0,0,0,.08);--radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Noto Serif SC',serif;font-weight:700;line-height:1.35}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* 导航 */
+header{position:sticky;top:0;z-index:100;background:rgba(253,245,245,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700}
+.logo-mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:900;font-size:16px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text2);font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.age-badge{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--accent);color:var(--accent);font-weight:500}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+
+/* 页面头部 */
+.page-hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.page-hero h1{font-size:32px;margin-bottom:10px}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero p{color:var(--text2);font-size:15px;max-width:640px}
+.breadcrumb{font-size:13px;color:var(--text3);margin-bottom:16px}
+.breadcrumb a{color:var(--text2)}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{margin:0 8px}
+
+/* 筛选栏 */
+.filter-bar{padding:24px 0;border-bottom:1px solid var(--border);background:var(--bg2)}
+.filter-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.search-box{display:flex;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;gap:10px;flex:1;min-width:240px;max-width:400px}
+.search-box input{background:transparent;border:none;outline:none;color:var(--text);font-size:14px;width:100%;font-family:inherit}
+.search-box input::placeholder{color:var(--text3)}
+.search-box svg{width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;flex-shrink:0}
+.filter-group{display:flex;align-items:center;gap:8px}
+.filter-group label{font-size:13px;color:var(--text3);white-space:nowrap}
+.filter-select{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;font-family:inherit;cursor:pointer;outline:none}
+.filter-select:focus{border-color:var(--accent)}
+.result-count{font-size:13px;color:var(--text3);margin-left:auto}
+.result-count strong{color:var(--accent);font-weight:600}
+
+/* 厂家卡片网格 */
+.mfr-section{padding:40px 0 64px}
+.mfr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mfr-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .25s;display:flex;flex-direction:column}
+.mfr-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.35);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.mfr-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.mfr-logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-soft),rgba(192,57,43,.05));border:1px solid rgba(192,57,43,.2);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--accent);flex-shrink:0}
+.mfr-title h3{font-size:17px;margin-bottom:4px}
+.mfr-title .mfr-en{font-size:12px;color:var(--text3);font-family:system-ui}
+.mfr-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.mfr-tag{font-size:11px;padding:3px 10px;border-radius:4px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.mfr-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-bottom:16px;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.mfr-meta-item{font-size:12px}
+.mfr-meta-item .k{color:var(--text3);display:block;margin-bottom:2px}
+.mfr-meta-item .v{color:var(--text2);font-weight:500}
+.mfr-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:20px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mfr-actions{display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .25s;font-family:inherit;flex:1}
+.btn-primary{background:var(--accent);color:#ffffff}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.btn-outline:hover{color:var(--accent);border-color:var(--accent)}
+.verified{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#5fb878;margin-left:6px}
+.verified svg{width:12px;height:12px;stroke:#5fb878;fill:none;stroke-width:2.5}
+
+/* 空状态 */
+.empty-state{text-align:center;padding:80px 20px;color:var(--text3)}
+.empty-state svg{width:64px;height:64px;stroke:var(--text3);fill:none;stroke-width:1.5;margin-bottom:16px;opacity:.5}
+.empty-state p{font-size:15px}
+
+/* 页脚 */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 24px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer-brand p{font-size:13px;color:var(--text2);margin-top:14px;line-height:1.7}
+.footer-col h4{font-size:14px;margin-bottom:16px;color:var(--text)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:13px;color:var(--text3);transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:var(--text3)}
+.compliance{background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.15);border-radius:8px;padding:14px 20px;margin-bottom:28px;font-size:12px;color:var(--text2);line-height:1.8}
+.compliance strong{color:var(--accent)}
+.data-note{font-size:12px;color:var(--text3);text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid var(--border)}
+
+/* Toast */
+#toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--accent);color:var(--text);padding:12px 24px;border-radius:8px;font-size:14px;z-index:9998;transition:all .3s;opacity:0;pointer-events:none}
+
+/* 响应式 */
+@media(max-width:968px){
+  .mfr-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .page-hero h1{font-size:26px}
+  body{font-size:15px}
+  .btn{min-height:44px}
+  input,select{font-size:16px}
+}
+@media(max-width:560px){
+  .mfr-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .filter-row{flex-direction:column;align-items:stretch}
+  .search-box{max-width:100%}
+  .result-count{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">充</div>
+      <div>充气娃娃<span>.cn</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#news">行业资讯</a></li>
+      <li><a href="index.html#edu">产品科普</a></li>
+      <li><a href="index.html#guide">选购指南</a></li>
+      <li><a href="index.html#health">两性健康</a></li>
+      <li><a href="manufacturers.html" class="active">生产厂家</a></li>
+      <li><a href="index.html#law">法律法规</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="age-badge">18+</span>
+    </div>
+    <button class="menu-toggle" onclick="showToast('移动端菜单演示中')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</header>
+
+<!-- 页面头部 -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">首页</a><span>/</span>生产厂家导航
+    </div>
+    <h1>成人用品<em>生产厂家</em>导航</h1>
+    <p>收录国内成人情趣用品行业优质生产企业，涵盖硅胶/TPE制品、智能硬件、安全套、护理用品等品类，按地区与产能筛选，助力采购对接与品牌合作。</p>
+  </div>
+</section>
+
+<!-- 筛选栏 -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-row">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="搜索厂家名称、产品或地区..." oninput="filterMfrs()">
+      </div>
+      <div class="filter-group">
+        <label>地区</label>
+        <select class="filter-select" id="regionFilter" onchange="filterMfrs()">
+          <option value="">全部地区</option>
+          <option value="广东">广东</option>
+          <option value="浙江">浙江</option>
+          <option value="江苏">江苏</option>
+          <option value="上海">上海</option>
+          <option value="北京">北京</option>
+          <option value="辽宁">辽宁</option>
+          <option value="福建">福建</option>
+          <option value="广西">广西</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>品类</label>
+        <select class="filter-select" id="catFilter" onchange="filterMfrs()">
+          <option value="">全部品类</option>
+          <option value="硅胶制品">硅胶/TPE制品</option>
+          <option value="智能硬件">智能硬件</option>
+          <option value="安全套">安全套</option>
+          <option value="护理用品">护理用品</option>
+          <option value="综合">综合品类</option>
+        </select>
+      </div>
+      <div class="result-count">共 <strong id="resultCount">12</strong> 家厂家</div>
+    </div>
+  </div>
+</div>
+
+<!-- 厂家卡片 -->
+<section class="mfr-section">
+  <div class="container">
+    <div class="mfr-grid" id="mfrGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      <p>未找到匹配的厂家，请调整筛选条件</p>
+    </div>
+    <div class="data-note">以上厂家信息为行业公开资料整理，仅供参考，具体合作请以企业实际资质与合同为准。页面数据为演示示例。</div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="container">
+    <div class="compliance">
+      <strong>合规声明：</strong>本站为成人用品行业资讯与两性健康科普网站，所有内容仅限年满 18 周岁的成年人访问。本站不发布、不传播任何淫秽色情内容。厂家信息仅供行业参考，不构成采购推荐。
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-mark">充</div>
+          <div>充气娃娃<span>.cn</span></div>
+        </a>
+        <p>专注成人用品行业资讯与两性健康科普的垂直门户，以科学、理性、合规的视角服务成年用户。</p>
+        <p style="margin-top:16px;font-size:13px;color:var(--text2)">
+          <svg style="width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;vertical-align:middle;margin-right:6px" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          商务合作：contact@chongqiwawa.cn
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>内容频道</h4>
+        <ul>
+          <li><a href="index.html#news">行业资讯</a></li>
+          <li><a href="index.html#edu">产品科普</a></li>
+          <li><a href="index.html#guide">选购指南</a></li>
+          <li><a href="index.html#health">两性健康</a></li>
+          <li><a href="manufacturers.html">生产厂家</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>关于我们</h4>
+        <ul>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">站点介绍</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">编辑团队</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">投稿合作</a></li>
+          <li><a href="https://172.lot-ml.com/ProductEn/Index/04a04744e3c8d9a6" target="_blank" rel="noopener">广告服务</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">联系我们</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法律条款</h4>
+        <ul>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">用户协议</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">隐私政策</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">未成年人保护</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">内容免责声明</a></li>
+          <li><a href="#" onclick="showToast('该功能演示中');return false;">版权声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 充气娃娃.cn 版权所有 · 本站内容仅供成年人参考</p>
+      <p>ICP 备案号：待接入 · 经营许可证：待接入</p>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+// 厂家数据
+var manufacturers = [
+  {name:"爱侣健康科技",en:"AILV Health",logo:"爱",region:"浙江",city:"温州",year:"2003",scale:"500-1000人",cat:["硅胶制品","智能硬件","综合"],desc:"国内成人用品行业老牌生产企业，集研发、生产、销售于一体，拥有多项发明专利，产品远销欧美、东南亚等40多个国家和地区。",verified:true},
+  {name:"深圳积之美",en:"JIZHIMEI",logo:"积",region:"广东",city:"深圳",year:"2006",scale:"200-500人",cat:["硅胶制品","智能硬件"],desc:"专注硅胶类成人用品研发制造，拥有万级无尘车间和自动化生产线，为多个知名品牌提供ODM/OEM服务。",verified:true},
+  {name:"辽阳百乐保健品",en:"BAILE",logo:"百",region:"辽宁",city:"辽阳",year:"1993",scale:"1000人以上",cat:["综合","硅胶制品"],desc:"中国成人用品行业最早的生产企业之一，占地面积3万平方米，是行业内少数拥有自营进出口权的制造商。",verified:true},
+  {name:"深圳夏奇电子",en:"SIAKI",logo:"夏",region:"广东",city:"深圳",year:"2008",scale:"200-500人",cat:["智能硬件","硅胶制品"],desc:"聚焦智能互动类成人用品，主打APP互联、语音交互等科技产品，研发团队占比超30%。",verified:false},
+  {name:"桂林恒保健康防护",en:"HBM",logo:"恒",region:"广西",city:"桂林",year:"2001",scale:"1000人以上",cat:["安全套","护理用品"],desc:"国内安全套主要生产企业之一，拥有多条进口生产线，年产量超10亿只，供应多个知名品牌。",verified:true},
+  {name:"上海名邦橡胶制品",en:"MINGBANG",logo:"名",region:"上海",city:"上海",year:"2004",scale:"500-1000人",cat:["安全套"],desc:"专业安全套制造商，通过ISO13485医疗器械质量管理体系认证，产品覆盖中高端市场。",verified:true},
+  {name:"厦门海沧生物科技",en:"HAICANG Bio",logo:"海",region:"福建",city:"厦门",year:"2012",scale:"100-200人",cat:["护理用品","智能硬件"],desc:"专注两性健康护理产品与智能硬件研发，主打水溶性润滑剂、清洁护理液等配套品类。",verified:false},
+  {name:"东莞晟翰硅胶制品",en:"SHENGHAN",logo:"晟",region:"广东",city:"东莞",year:"2015",scale:"100-200人",cat:["硅胶制品"],desc:"专业液态硅胶制品工厂，拥有20台LSR注塑机，提供从模具开发到成品组装的一站式服务。",verified:false},
+  {name:"宁波愉悦电子科技",en:"YUYUE Tech",logo:"愉",region:"浙江",city:"宁波",year:"2017",scale:"100-200人",cat:["智能硬件","硅胶制品"],desc:"新锐智能成人用品制造商，主打静音马达、加热恒温等技术，产品设计多次获得国际奖项。",verified:false},
+  {name:"北京春水堂健康",en:"CHUNSHUITANG",logo:"春",region:"北京",city:"北京",year:"2003",scale:"200-500人",cat:["综合","智能硬件"],desc:"国内成人用品行业知名品牌，拥有自有生产基地和研发中心，覆盖线上零售与自有品牌制造。",verified:true},
+  {name:"苏州美人计智能科技",en:"MRJ Tech",logo:"美",region:"江苏",city:"苏州",year:"2018",scale:"100-200人",cat:["智能硬件"],desc:"专注AI与触觉反馈技术在成人用品领域的应用，核心团队来自消费电子与机器人行业。",verified:false},
+  {name:"广州性趣用品制造",en:"XINGQU",logo:"趣",region:"广东",city:"广州",year:"2010",scale:"200-500人",cat:["综合","硅胶制品","护理用品"],desc:"华南地区综合性成人用品制造商，提供全品类OEM/ODM服务，月产能可达50万件。",verified:false}
+];
+
+function renderMfrs(list){
+  var grid = document.getElementById('mfrGrid');
+  var empty = document.getElementById('emptyState');
+  document.getElementById('resultCount').textContent = list.length;
+  if(list.length === 0){
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = list.map(function(m){
+    var tags = m.cat.map(function(c){return '<span class="mfr-tag">'+c+'</span>'}).join('');
+    var v = m.verified ? '<span class="verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>已核验</span>' : '';
+    return '<div class="mfr-card">'
+      + '<div class="mfr-head">'
+      + '<div class="mfr-logo">'+m.logo+'</div>'
+      + '<div class="mfr-title"><h3>'+m.name+v+'</h3><div class="mfr-en">'+m.en+'</div></div>'
+      + '</div>'
+      + '<div class="mfr-tags">'+tags+'</div>'
+      + '<div class="mfr-meta">'
+      + '<div class="mfr-meta-item"><span class="k">所在地区</span><span class="v">'+m.region+' · '+m.city+'</span></div>'
+      + '<div class="mfr-meta-item"><span class="k">成立年份</span><span class="v">'+m.year+'年</span></div>'
+      + '<div class="mfr-meta-item"><span class="k">企业规模</span><span class="v">'+m.scale+'</span></div>'
+      + '<div class="mfr-meta-item"><span class="k">主营品类</span><span class="v">'+m.cat[0]+'等</span></div>'
+      + '</div>'
+      + '<p class="mfr-desc">'+m.desc+'</p>'
+      + '<div class="mfr-actions">'
+      + '<button class="btn btn-primary" onclick="showToast(\'厂家详情页演示中\')">查看详情</button>'
+      + '<button class="btn btn-outline" onclick="showToast(\'联系厂家功能演示中\')">联系厂家</button>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function filterMfrs(){
+  var kw = document.getElementById('searchInput').value.trim().toLowerCase();
+  var region = document.getElementById('regionFilter').value;
+  var cat = document.getElementById('catFilter').value;
+  var filtered = manufacturers.filter(function(m){
+    var matchKw = !kw || m.name.toLowerCase().indexOf(kw)>-1 || m.en.toLowerCase().indexOf(kw)>-1 || m.city.toLowerCase().indexOf(kw)>-1 || m.desc.toLowerCase().indexOf(kw)>-1;
+    var matchRegion = !region || m.region === region;
+    var matchCat = !cat || m.cat.indexOf(cat)>-1;
+    return matchKw && matchRegion && matchCat;
+  });
+  renderMfrs(filtered);
+}
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.opacity='1';
+  t.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(function(){t.style.opacity='0';t.style.transform='translateX(-50%) translateY(80px)'},2200);
+}
+
+renderMfrs(manufacturers);
+</script>
+</body>
+</html>
