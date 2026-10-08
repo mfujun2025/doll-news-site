@@ -349,12 +349,18 @@ function showToast(msg){
   var gate=document.getElementById('ageGate');
   if(gate){
     function tryInit(){
-      try{ if(sessionStorage.getItem('ageVerified')==='1'){ show(); setTimeout(function(){ if(kfLoaded())hide(); },2500);} }catch(e){}
+      try{ if(sessionStorage.getItem('ageVerified')==='1'){ show(); } }catch(e){}
     }
     tryInit();
     try{
+      if(typeof enterSite==='function'){
+        var _orig=window.enterSite;
+        window.enterSite=function(){ try{_orig();}catch(e){} show(); };
+      }
+    }catch(e){}
+    try{
       var obs=new MutationObserver(function(){
-        if(gate.style.display==='none'){ show(); setTimeout(function(){ if(kfLoaded())hide(); },2500); }
+        if(gate.style.display==='none'){ show(); }
       });
       obs.observe(gate,{attributes:true,attributeFilter:['style']});
     }catch(e){}
@@ -364,5 +370,7 @@ function showToast(msg){
   }
 })();
 </script>
+
+
 </body>
 </html>
